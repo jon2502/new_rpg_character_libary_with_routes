@@ -14,12 +14,18 @@
             <p>{{ character.p10 }}</p>
             <p>{{ character.p11 }}</p>
             <p>{{ character.p12 }}</p>
+            <p>{{ character.p13 }}</p>
+            <p>{{ character.p14 }}</p>
+            <p>{{ character.p15 }}</p>
         </div>
-        <img :src="character.img" :alt="character.name">
+        <div>
+            <img :src="character.img" :alt="character.name">
+            <router-link :to="{ name: 'character gallery', params: {name: character.name, }}">
+                <button>view character gallery</button>
+            </router-link>
+        </div>
+
     </section>
-    <aside>
-            side bar
-    </aside>
 </template>
 
 <script>
@@ -35,6 +41,7 @@ export default {
     },
     methods: {
         async getcharacters() {
+            console.log(this.name)
             // url
             let url = `http://localhost:3000/characters/${this.name}`;
             //fetch api with url
@@ -60,4 +67,7 @@ export default {
         grid-template-columns: repeat(2, 50%);
         place-items: center;
     }
+img{
+    width: 90%;
+}
 </style>
