@@ -10,7 +10,7 @@
         <div>
             <h2>{{ character.name }}</h2>
             <ul>
-                <li>{{ character.race }}Race: Half Elf</li>
+                <li>{{ character.race }}</li>
                 <li>{{ character.culture_background }}</li>
                 <li>{{ character.profession_class }}</li>
                 <li>{{ character.place_of_birth }}</li>
