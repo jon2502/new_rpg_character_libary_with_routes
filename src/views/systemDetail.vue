@@ -1,4 +1,5 @@
 <template>
+    <h2>{{ this.system }}</h2>
     <div v-for='(character, i) in characters' :key='i'>
         <!-- : placeres forand to så at vi kan binde data fra chracter til character detain parametern name -->
         <router-link :to="{ name: 'characterDetail', params: {name: character.name, }}">
@@ -23,6 +24,9 @@
 
 <script>
     export default {
+
+        props: ['system'],
+
         data() {
             return {
                 //
@@ -33,7 +37,7 @@
             async getcharacter() {
 
                 //fetch api
-                let characters = await fetch('http://localhost:3000/characters');
+                let characters = await fetch(`http://localhost:3000/systems/${this.system}`);
                 //
                 let finalist = await characters.json();
                 //

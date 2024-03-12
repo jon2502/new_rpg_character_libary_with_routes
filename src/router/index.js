@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import characterDetail from '../views/characterDetail.vue'
 import GalleryPage from '../views/GalleryPage.vue'
+import systemPage from '../views/systemPage.vue'
+import systemDetail from '../views/systemDetail'
 
 const routes = [
   {
@@ -24,6 +26,17 @@ const routes = [
     path: '/libary/:name',
     name: 'characterDetail',
     component: characterDetail,
+    props: true
+  },
+  {
+    path: '/systems',
+    name: 'systemPage',
+    component: systemPage,
+  },
+  {
+    path: '/systems/:system',
+    name: 'systemDetail',
+    component: systemDetail,
     props: true
   }
 ]
