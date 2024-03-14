@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import allCharacters from '../views/allCharachters.vue'
 import characterDetail from '../views/characterDetail.vue'
 import GalleryPage from '../views/GalleryPage.vue'
 import systemPage from '../views/systemPage.vue'
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/characters',
+    name: 'characters',
+    component: allCharacters
   },
   {
     path: '/gallery',
