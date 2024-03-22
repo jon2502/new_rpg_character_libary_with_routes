@@ -52,7 +52,7 @@
         grid-template-columns: repeat(5, 20%);
         place-items: center;
     }
-    img{
+    #gallery img{
         width: 90%;
     }
 </style>
