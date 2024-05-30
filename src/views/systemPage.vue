@@ -2,7 +2,7 @@
     <h2>Systems</h2>
     <div v-for='(system, i) in systems' :key='i'>
         <!-- : placeres forand to så at vi kan binde data fra chracter til character detain parametern name -->
-        <router-link :to="{ name: 'systemDetail', params: {system: system.System_name, }}">
+        <router-link :to="{ name: 'system Detail', params: {system: system.System_name, }}">
             <h3>{{ system.System_name }}</h3>
         </router-link>
     </div>

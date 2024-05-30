@@ -30,7 +30,7 @@ const routes = [
     props: true
   },
   {
-    path: '/libary/:name',
+    path: '/characters/:name',
     name: 'character Detail',
     component: characterDetail,
     props: true
