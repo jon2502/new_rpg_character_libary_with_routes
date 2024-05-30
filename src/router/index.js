@@ -5,6 +5,7 @@ import characterDetail from '../views/characterDetail.vue'
 import GalleryPage from '../views/GalleryPage.vue'
 import systemPage from '../views/systemPage.vue'
 import systemDetail from '../views/systemDetail'
+import DownloadPage from '../views/DownloadPage'
 
 const routes = [
   {
@@ -30,20 +31,25 @@ const routes = [
   },
   {
     path: '/libary/:name',
-    name: 'characterDetail',
+    name: 'character Detail',
     component: characterDetail,
     props: true
   },
   {
     path: '/systems',
-    name: 'systemPage',
+    name: 'systems',
     component: systemPage,
   },
   {
     path: '/systems/:system',
-    name: 'systemDetail',
+    name: 'system Detail',
     component: systemDetail,
     props: true
+  },
+  {
+    path: '/downloads',
+    name: 'Downloads',
+    component: DownloadPage
   }
 ]
 

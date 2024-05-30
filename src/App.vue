@@ -3,7 +3,8 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/characters">characters</router-link> |
     <router-link to="/gallery">gallery</router-link> |
-    <router-link to="/systems">systems</router-link>
+    <router-link to="/systems">systems</router-link> |
+    <router-link to="/downloads">downloads</router-link>
   </nav>
   <router-view/>
 </template>
