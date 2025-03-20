@@ -21,7 +21,7 @@
             async getsystems() {
 
                 //fetch api
-                let systems = await fetch(`http://localhost:3000/systems`);
+                let systems = await fetch(`https://rpg-character-library-api.onrender.com/systems`);
                 //
                 let finalist = await systems.json();
                 //

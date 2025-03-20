@@ -19,7 +19,7 @@
             async getgallery() {
                 // url
                 if(this.name){
-                    let url = `http://localhost:3000/gallery/${this.name}`;
+                    let url = `https://rpg-character-library-api.onrender.com/gallery/${this.name}`;
                     //fetch api with url
                     let gallery = await fetch(url);
                     // 
@@ -27,7 +27,7 @@
                     //
                     this.gallery = finalist.character;
                 }else{
-                    let url = `http://localhost:3000/gallery`;
+                    let url = `https://rpg-character-library-api.onrender.com/gallery`;
                     //fetch api with url
                     let gallery = await fetch(url);
                     // 

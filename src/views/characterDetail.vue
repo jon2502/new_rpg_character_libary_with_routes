@@ -43,7 +43,7 @@ export default {
         async getcharacters() {
             console.log(this.name)
             // url
-            let url = `http://localhost:3000/characters/${this.name}`;
+            let url = `https://rpg-character-library-api.onrender.com/characters/${this.name}`;
             //fetch api with url
             let character = await fetch(url);
             // 

@@ -33,7 +33,7 @@
             async getcharacter() {
 
                 //fetch api
-                let characters = await fetch('http://localhost:3000/characters');
+                let characters = await fetch('https://rpg-character-library-api.onrender.com/characters');
                 //
                 let finalist = await characters.json();
                 console.log(finalist)

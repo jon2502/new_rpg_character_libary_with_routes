@@ -28,7 +28,7 @@ export default {
             async getcharacter() {
 
                 //fetch api to get download info
-                let downloads = await fetch('http://localhost:3000/downloads');
+                let downloads = await fetch('https://rpg-character-library-api.onrender.com/downloads');
                 //
                 let finalist = await downloads.json();
                 console.log(finalist)
