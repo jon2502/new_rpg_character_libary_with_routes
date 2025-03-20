@@ -1,7 +1,7 @@
 <template>
     <h2>{{ this.system }}</h2>
     <section id="characteSelctor">
-        <div v-for='(character, i) in characters' :key='i'class="character-item">
+        <div v-for='(character) in SortedCharacters' :key='character.name' class="character-item">
             <!-- : placeres forand to så at vi kan binde data fra chracter til character detain parametern name -->
             <router-link :to="{ name: 'character Detail', params: {name: character.name, }}">
                 <h3>{{ character.name }}</h3>
@@ -9,7 +9,7 @@
         </div>
     </section>
     <section id="Libary">
-        <div class="infoContainer" v-for='(character, i) in characters' :key='i'>
+        <div class="infoContainer" v-for='(character) in SortedCharacters' :key='character.name'>
         <div>
             <h2>{{ character.name }}</h2>
             <ul>
@@ -35,6 +35,13 @@
                 characters: []
             }
         },
+
+        computed:{
+            SortedCharacters(){
+                return [...this.characters].sort((a,b)=> a.name.localeCompare(b.name))
+            }
+        },
+
         methods: {
             async getcharacter() {
 
