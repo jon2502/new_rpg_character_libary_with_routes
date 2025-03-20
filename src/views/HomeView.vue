@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>welcome</h1>
+        <h1>Welcome to my RPG character library</h1>
     </section>
 </template>
 
