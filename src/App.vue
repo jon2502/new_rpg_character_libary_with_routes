@@ -38,9 +38,21 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
+#characteSelctor{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2vw;
+    }
+
+.character-item{
+        flex: 1 0 calc(20% - 10px);
+        box-sizing: border-box;
+    }
+
 #Libary img{
   width: 80%;
 }
+
 #Libary{
   display: grid;
   margin-top: 2vh;

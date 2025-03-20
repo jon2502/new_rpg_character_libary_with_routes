@@ -54,16 +54,3 @@
     }
 </script>
 
-<style>
-    #characteSelctor{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2vw;
-    }
-
-    .character-item{
-        flex: 1 0 calc(20% - 10px);
-        box-sizing: border-box;
-    }
-</style>
-
