@@ -4,8 +4,8 @@ import allCharacters from '../views/allCharachters.vue'
 import characterDetail from '../views/characterDetail.vue'
 import GalleryPage from '../views/GalleryPage.vue'
 import systemPage from '../views/systemPage.vue'
-import systemDetail from '../views/systemDetail'
-import DownloadPage from '../views/DownloadPage'
+import systemDetail from '../views/systemDetail.vue'
+import DownloadPage from '../views/DownloadPage.vue'
 
 const routes = [
   {
@@ -54,7 +54,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
