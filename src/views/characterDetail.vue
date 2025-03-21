@@ -41,7 +41,6 @@ export default {
     },
     methods: {
         async getcharacters() {
-            console.log(this.name)
             // url
             let url = `https://rpg-character-library-api.onrender.com/characters/${this.name}`;
             //fetch api with url

@@ -26,7 +26,6 @@
                 let finalist = await systems.json();
                 //
                 this.systems = finalist.systems;
-                console.log(this.systems)
             }
         },
 

@@ -1,5 +1,8 @@
 # new_rpg_character_libary_with_routes
 
+## page
+link to GitHub page: https://jon2502.github.io/new_rpg_character_libary_with_routes/
+
 ## Project setup
 ```
 npm install

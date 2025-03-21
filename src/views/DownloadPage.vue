@@ -31,7 +31,6 @@ export default {
                 let downloads = await fetch('https://rpg-character-library-api.onrender.com/downloads');
                 //
                 let finalist = await downloads.json();
-                console.log(finalist)
                 //
                 this.downloads = finalist.downloads;
             },
