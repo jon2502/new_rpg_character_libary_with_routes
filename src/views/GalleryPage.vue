@@ -32,8 +32,7 @@
         isLoading.value = false
         gallery.value = images.characters
     }
-
-    console.log(gallery)
+    
     onMounted(()=> {
         getgallery()
     })

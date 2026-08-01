@@ -26,9 +26,7 @@
         isLoading.value = false
         systems.value = list.systems
     }
-
-    console.log(systems)
-    
+        
     onMounted(()=> {
         getsystems()
     })
