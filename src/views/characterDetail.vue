@@ -1,4 +1,7 @@
 <template>
+    <section v-if="isLoading">
+        <Spinner/>
+    </section>
      <section id="Grid">
         <div>
             <h1>{{ character.name }}</h1>
@@ -28,35 +31,26 @@
     </section>
 </template>
 
-<script>
-export default {
-    //
-    props: ['name'],
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import Spinner from '../components/spinner.vue';
 
-    data(){
-        return {
-            //
-            character: {}
-        }
-    },
-    methods: {
-        async getcharacters() {
-            // url
-            let url = `https://rpg-character-library-api.onrender.com/characters/${this.name}`;
-            //fetch api with url
-            let character = await fetch(url);
-            // 
-            let finalist = await character.json();
-            //
-            this.character = finalist.character[0];
-        }
-    },
-    created: function (){
-        //
-        this.getcharacters()
+    const props = defineProps(['name'])
+
+    const character = ref({})
+    let isLoading = ref(false)
+
+    const getcharacter = async () => {
+        isLoading = true
+        const response = await fetch(`https://rpg-character-library-api.onrender.com/characters/${props.name}`)
+        const list = await response.json()
+        isLoading = false
+        character.value = list.character[0]
     }
 
-}
+    onMounted(()=> {
+        getcharacter()
+    })
 </script>
 
 <style>

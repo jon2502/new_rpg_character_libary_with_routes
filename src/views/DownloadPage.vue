@@ -1,7 +1,10 @@
 <template>
     <h1>Downloads</h1>
     <p>Here you can find and download homebrewed material from classes to races.</p>
-    <section v-for='(download, i) in downloads' :key='i'>
+    <section v-if="isLoading">
+        <Spinner/>
+    </section>
+    <section v-else v-for='(download, i) in downloads' :key='i'>
         <div class="flex">
             <!--run download funcion when a user click one of the buttons-->
             <img :src="download.link.replace('pdf', 'png')" :alt="download.name" class="thumbnail">
@@ -12,29 +15,23 @@
     </section>
 </template>
 
-<script>
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import { saveAs } from 'file-saver';
+    import Spinner from '../components/spinner.vue';
 
-//import and use SaveAS from file-saver package
-import { saveAs } from 'file-saver';
+    const downloads = ref([])
+    let isLoading = ref(false)
+    
+    const getfiles = async () => {
+        isLoading = true
+        const response = await fetch(`https://rpg-character-library-api.onrender.com/downloads`)
+        const files = await response.json()
+        isLoading = false
+        downloads.value = files.downloads
+    }
 
-export default {
-        data() {
-            return {
-                //
-                downloads: []
-            }
-        },
-        methods: {
-            async getcharacter() {
-
-                //fetch api to get download info
-                let downloads = await fetch('https://rpg-character-library-api.onrender.com/downloads');
-                //
-                let finalist = await downloads.json();
-                //
-                this.downloads = finalist.downloads;
-            },
-            async downloadFile(link, name) {
+    const downloadFile= async (link, name) => {
                 try{
                     //fetch link
                     let response = await fetch(link);
@@ -46,13 +43,10 @@ export default {
                     alert("oh no!");
                 }
             }
-        },
 
-        created: function (){
-            //
-            this.getcharacter()
-        }
-    }
+    onMounted(()=> {
+        getfiles()
+    })
 </script>
 
 <style>

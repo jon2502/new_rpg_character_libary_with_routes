@@ -1,48 +1,42 @@
+
 <template>
+    <h2>{{ pageName }}</h2>
+    <section v-if="isLoading">
+        <Spinner/>
+    </section>
     <section id="gallery" v-for='(image, i) in gallery' :key='i'>
         <img :src="image.img">
     </section>
 </template>
 
-<script>
-    export default {
-        //
-        props: ['name'],
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import Spinner from '../components/spinner.vue';
 
-        data(){
-            return {
-                //
-                gallery: {}
-            }
-        },
-        methods: {
-            async getgallery() {
-                // url
-                if(this.name){
-                    let url = `https://rpg-character-library-api.onrender.com/gallery/${this.name}`;
-                    //fetch api with url
-                    let gallery = await fetch(url);
-                    // 
-                    let finalist = await gallery.json();
-                    //
-                    this.gallery = finalist.character;
-                }else{
-                    let url = `https://rpg-character-library-api.onrender.com/gallery`;
-                    //fetch api with url
-                    let gallery = await fetch(url);
-                    // 
-                    let finalist = await gallery.json();
-                    //
-                    this.gallery = finalist.characters;
-                }
-            }
-        },
-        created: function (){
-            //
-            this.getgallery()
-        }
+    const props = defineProps(['name'])
 
+    const gallery = ref([])
+    const pageName = ref(props.name
+            ? `${props.name}'s Gallery`
+            : "Gallery"
+        )
+    let isLoading = ref(false)
+    
+    const getgallery = async () => {
+        isLoading = true
+        const url = props.name
+            ? `https://rpg-character-library-api.onrender.com/gallery/${props.name}`
+            : `https://rpg-character-library-api.onrender.com/gallery`
+        const response = await fetch(url)
+        const images = await response.json()
+        isLoading = false
+        gallery.value = images.characters
     }
+
+    console.log(gallery)
+    onMounted(()=> {
+        getgallery()
+    })
 </script>
 
 <style>

@@ -1,37 +1,35 @@
+
 <template>
     <h2>Systems</h2>
-    <div v-for='(system, i) in systems' :key='i'>
+    <section v-if="isLoading">
+        <Spinner/>
+    </section>
+    <section v-else v-for='(system, i) in systems' :key='i'>
         <!-- : placeres forand to så at vi kan binde data fra chracter til character detain parametern name -->
         <router-link :to="{ name: 'system Detail', params: {system: system.System_name, }}">
             <h3>{{ system.System_name }}</h3>
         </router-link>
-    </div>
+    </section>
 </template>
 
-<script>
-    export default {
-
-        data() {
-            return {
-                //
-                systems: []
-            }
-        },
-        methods: {
-            async getsystems() {
-
-                //fetch api
-                let systems = await fetch(`https://rpg-character-library-api.onrender.com/systems`);
-                //
-                let finalist = await systems.json();
-                //
-                this.systems = finalist.systems;
-            }
-        },
-
-        created: function (){
-            //
-            this.getsystems()
-        }
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import Spinner from '../components/spinner.vue';
+    
+    const systems = ref([])
+    let isLoading = ref(false)
+    
+    const getsystems = async () => {
+        isLoading = true
+        const response = await fetch(`https://rpg-character-library-api.onrender.com/systems`)
+        const list = await response.json()
+        isLoading = false
+        systems.value = list.systems
     }
+
+    console.log(systems)
+    
+    onMounted(()=> {
+        getsystems()
+    })
 </script>
