@@ -23,13 +23,13 @@
     let isLoading = ref(false)
     
     const getgallery = async () => {
-        isLoading = true
+        isLoading.value = true
         const url = props.name
             ? `https://rpg-character-library-api.onrender.com/gallery/${props.name}`
             : `https://rpg-character-library-api.onrender.com/gallery`
         const response = await fetch(url)
         const images = await response.json()
-        isLoading = false
+        isLoading.value = false
         gallery.value = images.characters
     }
 

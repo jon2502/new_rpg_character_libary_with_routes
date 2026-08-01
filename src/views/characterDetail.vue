@@ -41,10 +41,10 @@
     let isLoading = ref(false)
 
     const getcharacter = async () => {
-        isLoading = true
+        isLoading.value = true
         const response = await fetch(`https://rpg-character-library-api.onrender.com/characters/${props.name}`)
         const list = await response.json()
-        isLoading = false
+        isLoading.value = false
         character.value = list.character[0]
     }
 
