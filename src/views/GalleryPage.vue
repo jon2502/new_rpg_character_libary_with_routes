@@ -10,16 +10,14 @@
 </template>
 
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, computed, watch} from 'vue'
     import Spinner from '../components/spinner.vue';
 
-    const props = defineProps(['name'])
-
+    let props = defineProps(['name'])
+    console.log(props.name)
     const gallery = ref([])
-    const pageName = ref(props.name
-            ? `${props.name}'s Gallery`
-            : "Gallery"
-        )
+    const pageName = ref()
+    
     let isLoading = ref(false)
     
     const getgallery = async () => {
@@ -28,14 +26,21 @@
             ? `https://rpg-character-library-api.onrender.com/gallery/${props.name}`
             : `https://rpg-character-library-api.onrender.com/gallery`
         const response = await fetch(url)
-        const images = await response.json()
+        const data = await response.json()
+        const name = props.name
+            ? `${props.name}'s Gallery`
+            : "Gallery"
+        pageName.value = name
         isLoading.value = false
-        gallery.value = images.characters
+        gallery.value = data
     }
-    
-    onMounted(()=> {
+
+    watch(() => props.name, () =>{
         getgallery()
-    })
+    },
+    { immediate: true }
+    )
+
 </script>
 
 <style>

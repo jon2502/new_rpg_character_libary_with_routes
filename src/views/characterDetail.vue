@@ -43,9 +43,9 @@
     const getcharacter = async () => {
         isLoading.value = true
         const response = await fetch(`https://rpg-character-library-api.onrender.com/characters/${props.name}`)
-        const list = await response.json()
+        const data = await response.json()
         isLoading.value = false
-        character.value = list.character[0]
+        character.value = data
     }
 
     onMounted(()=> {

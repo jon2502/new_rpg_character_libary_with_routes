@@ -26,9 +26,9 @@
     const getfiles = async () => {
         isLoading.value = true
         const response = await fetch(`https://rpg-character-library-api.onrender.com/downloads`)
-        const files = await response.json()
+        const data = await response.json()
         isLoading.value = false
-        downloads.value = files.downloads
+        downloads.value = data
     }
 
     const downloadFile= async (link, name) => {

@@ -22,9 +22,9 @@
     const getsystems = async () => {
         isLoading.value = true
         const response = await fetch(`https://rpg-character-library-api.onrender.com/systems`)
-        const list = await response.json()
+        const data = await response.json()
         isLoading.value = false
-        systems.value = list.systems
+        systems.value = data
     }
         
     onMounted(()=> {
