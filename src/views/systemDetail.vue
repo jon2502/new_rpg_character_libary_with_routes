@@ -1,5 +1,5 @@
 <template>
-    <h2>{{ this.system }}</h2>
+    <h2>{{ props.system }}</h2>
     <section v-if="isLoading">
         <Spinner/>
     </section>
@@ -39,6 +39,7 @@
     
     const getcharacters = async () => {
         isLoading.value = true
+        console.log(props.system)
         const response = await fetch(`https://rpg-character-library-api.onrender.com/systems/${props.system}`)
         const data = await response.json()
         isLoading.value = false
