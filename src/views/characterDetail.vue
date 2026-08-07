@@ -3,23 +3,9 @@
         <Spinner/>
     </section>
      <section id="Grid">
-        <div>
+        <div >
             <h1>{{ character.name }}</h1>
-            <p>{{ character.p1 }}</p>
-            <p>{{ character.p2 }}</p>
-            <p>{{ character.p3 }}</p>
-            <p>{{ character.p4 }}</p>
-            <p>{{ character.p5 }}</p>
-            <p>{{ character.p6 }}</p>
-            <p>{{ character.p7 }}</p>
-            <p>{{ character.p8 }}</p>
-            <p>{{ character.p9 }}</p>
-            <p>{{ character.p10 }}</p>
-            <p>{{ character.p11 }}</p>
-            <p>{{ character.p12 }}</p>
-            <p>{{ character.p13 }}</p>
-            <p>{{ character.p14 }}</p>
-            <p>{{ character.p15 }}</p>
+            <component v-for="text in character.text_content" :is="text.tag">{{ text.text }}</component>
         </div>
         <div>
             <img :src="character.img" :alt="character.name">
@@ -27,7 +13,6 @@
                 <button>view character gallery</button>
             </router-link>
         </div>
-
     </section>
 </template>
 
